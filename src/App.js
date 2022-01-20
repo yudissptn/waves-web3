@@ -1,19 +1,19 @@
 import { useState } from "react";
 import "./App.css";
-import { Signer } from "@waves/signer";
-import { ProviderSeed } from "@waves/provider-seed";
-import { libs } from "@waves/waves-transactions";
+// import { Signer } from "@waves/signer";
+// import { ProviderSeed } from "@waves/provider-seed";
+// import { libs } from "@waves/waves-transactions";
 
-const seed = libs.crypto.randomSeed(15);
-const signer = new Signer({
-  // Specify URL of the node on Testnet
-  NODE_URL: "https://nodes-testnet.wavesnodes.com",
-});
-signer.setProvider(new ProviderSeed(seed));
+// const seed = libs.crypto.randomSeed(15);
+// const signer = new Signer({
+//   // Specify URL of the node on Testnet
+//   NODE_URL: "https://nodes-testnet.wavesnodes.com",
+// });
+// signer.setProvider(new ProviderSeed(seed));
 
 function App() {
   const [isConnected, setIsConnected] = useState({ state: false, address: "" });
-  const [isAuthSigner, setIsAuthSigner] = useState({
+  const [isAuthSigner] = useState({
     state: false,
     address: "",
   });
@@ -40,9 +40,9 @@ function App() {
 
   const authWavesSigner = async () => {
     try {
-      const userData = await signer.login(); // calling Waves Signer
-      console.log(userData);
-      setIsAuthSigner({ state: true, address: userData.address });
+      // const userData = await signer.login(); // calling Waves Signer
+      // console.log(userData);
+      // setIsAuthSigner({ state: true, address: userData.address });
     } catch (e) {
       console.error("login rejected"); // handling user auth reject
     }
