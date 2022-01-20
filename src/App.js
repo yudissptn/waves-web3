@@ -48,49 +48,6 @@ function App() {
     }
   };
 
-  const invokeSigner = () => {
-    signer
-      .invoke({
-        dApp: "3MuN7D8r19zdvSpAd1L91Gs88bcgwUFy2mn",
-        fee: 0.004,
-        payment: [
-          {
-            amount: 677728840,
-            assetId: "WAVES",
-          },
-        ],
-        call: {
-          function: "faucet",
-          args: [
-            { type: "integer", value: 1 },
-            { type: "binary", value: "base64:AAA=" },
-            { type: "string", value: "foo" },
-          ],
-        },
-      })
-      .broadcast()
-      .then(console.log);
-  };
-
-  const sendDataSigner = () => {
-    signer
-      .data({
-        data: [{ key: "lastCall", value: String(new Date()), type: "string" }],
-      })
-      .broadcast()
-      .then(console.log);
-  };
-
-  const transferSigner = () => {
-    signer
-      .transfer({
-        recipient: "3MuN7D8r19zdvSpAd1L91Gs88bcgwUFy2mn",
-        amount: 1,
-      })
-      .broadcast()
-      .then(console.log);
-  };
-
   return (
     <div className="App">
       <header className="App-header">
@@ -112,9 +69,6 @@ function App() {
           ) : (
             <p>{`Authorized as ${isAuthSigner.address}`}</p>
           )}
-          <button onClick={invokeSigner}>Invoke Script</button>
-          <button onClick={sendDataSigner}>Send Data</button>
-          <button onClick={transferSigner}>Send Transfer</button>
         </div>
       </main>
     </div>
